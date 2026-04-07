@@ -78,15 +78,15 @@ ok "Created config dirs in $CONFIG_DIR"
 
 # ─── Install binaries ─────────────────────────────────────────────────────────
 p "Installing claude-shell..."
-cp "$REPO_DIR/shell/claude-shell.py" "$INSTALL_DIR/claude-shell"
+cp "$REPO_DIR/claude-shell.py" "$INSTALL_DIR/claude-shell"
 chmod +x "$INSTALL_DIR/claude-shell"
 ok "claude-shell → $INSTALL_DIR/claude-shell"
 
-cp "$REPO_DIR/drivers/driver-daemon.py" "$INSTALL_DIR/claudeos-drivers"
+cp "$REPO_DIR/driver-daemon.py" "$INSTALL_DIR/claudeos-drivers"
 chmod +x "$INSTALL_DIR/claudeos-drivers"
 ok "claudeos-drivers → $INSTALL_DIR/claudeos-drivers"
 
-cp "$REPO_DIR/daemon/security-daemon.py" "$INSTALL_DIR/claudeos-security"
+cp "$REPO_DIR/security-daemon.py" "$INSTALL_DIR/claudeos-security"
 chmod +x "$INSTALL_DIR/claudeos-security"
 ok "claudeos-security → $INSTALL_DIR/claudeos-security"
 
@@ -155,7 +155,7 @@ fi
 
 # ─── Integrity baseline ────────────────────────────────────────────────────────
 p "Building initial security baseline (this takes ~30s)..."
-python3 "$REPO_DIR/daemon/security-daemon.py" --baseline 2>/dev/null && ok "Security baseline created" || warn "Baseline skipped (needs root for some paths)"
+python3 "$REPO_DIR/security-daemon.py" --baseline 2>/dev/null && ok "Security baseline created" || warn "Baseline skipped (needs root for some paths)"
 
 # ─── Summary ──────────────────────────────────────────────────────────────────
 echo ""
